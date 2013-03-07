@@ -1,68 +1,56 @@
-nullmailer Cookbook
-===================
-TODO: Enter the cookbook description here.
+Description
+===========
 
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
-
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
-
-e.g.
-#### packages
-- `toaster` - nullmailer needs toaster to brown your bagel.
+Installs and configures [nullmailer](http://untroubled.org/nullmailer/), simple relay-only mail transport agent.
 
 Attributes
-----------
-TODO: List you cookbook attributes here.
+==========
 
-e.g.
-#### nullmailer::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['nullmailer']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+- `node['nullmailer']['mailname']`
 
-Usage
------
-#### nullmailer::default
-TODO: Write usage instructions for each cookbook.
+  Fully-qualified host name of the node running relay agent. Defaults to `node.fqdn`.
 
-e.g.
-Just include `nullmailer` in your node's `run_list`:
+- `node['nullmailer']['remotes']`
 
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[nullmailer]"
-  ]
-}
-```
+  A list of remote servers to which to send each message. Each element contains a remote host name or address followed by an optional  protocol            string,  separated by white space.  The protocol name defaults to smtp, and may be followed by command-line arguments for that module.
 
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
+  Examples:
 
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write you change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
+    node['nullmailer']['remotes'] = ['1.2.3.4', 'smarthost.dom smtp --port=2525 --user=user --pass=pass']
+
+  Possible command-line arguments:
+
+  - --port, set the port number of the remote host to connect to
+  - --user, set the user name to be used for authentication
+  - --pass, set the password for authentication
+  - --auth-login, use AUTH LOGIN instead of auto-detecting in SMTP
+  - --ssl, Connect using SSL (on port 465 instead) (1.10+)
+  - --starttls, use STARTTLS command (1.10+)
+  - --x509cafile, Certificate authority trust file (1.10+)
+  - --x509crlfile, Certificate revocation list file (1.10+)
+  - --x509fmtdef, X.509 files are in DER format (1.10+)
+  - --insecure, Do not abort if server certificate fails validation (1.10+)
+
+
+- `node['nullmailer']['adminaddr']`
+
+  Recipients to users on localhost or canonical host name (mailname) are remapped to this address. This allows local daemons to send emails to 'somebody@localhost' and have it go somewhere sensible instead of being bounced by your relay host.
 
 License and Authors
--------------------
-Authors: TODO: List authors
+===================
+
+Author:: Arkency <dev@arkency.com>
+
+Copyright 2012, Arkency
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
