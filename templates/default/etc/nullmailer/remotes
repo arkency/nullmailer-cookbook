@@ -1,0 +1,3 @@
+<% @remotes.each do |remote| %>
+<%= remote %>
+<% end %>
