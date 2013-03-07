@@ -16,10 +16,11 @@ Attributes
 
   Examples:
 
-    node['nullmailer']['remotes'] = ['1.2.3.4', 'smarthost.dom smtp --port=2525 --user=user --pass=pass']
-
+  ```ruby
+  node['nullmailer']['remotes'] = ['1.2.3.4', 'host.domain smtp --port=2525 --user=user --pass=pass']
+  ```
+  
   Possible command-line arguments:
-
   - --port, set the port number of the remote host to connect to
   - --user, set the user name to be used for authentication
   - --pass, set the password for authentication
