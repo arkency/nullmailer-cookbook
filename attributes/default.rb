@@ -1,3 +1,9 @@
+default['nullmailer']['install_method'] = 'source'
+default['nullmailer']['src_url'] = 'http://untroubled.org/nullmailer/archive/'
+default['nullmailer']['version'] = '1.13'
+default['nullmailer']['checksum'] = 'aaeb8746fbc082917b26d0827ccc9270'
+default['nullmailer']['dir'] = '/usr/local'
+default['nullmailer']['tls'] = true
 default['nullmailer']['remotes']   = []
 default['nullmailer']['mailname']  = nil
 default['nullmailer']['adminaddr'] = nil

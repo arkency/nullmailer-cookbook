@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of nullmailer.
 
+## 0.2.0:
+
+* allow to install nullmailer from source
+
 ## 0.1.0:
 
 * Initial release of nullmailer

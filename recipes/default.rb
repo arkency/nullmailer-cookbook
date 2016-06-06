@@ -1,4 +1,9 @@
-package "nullmailer"
+case node['platform_family']
+  when "debian", "ubuntu"
+   include_recipe "apt"
+end
+
+include_recipe "nullmailer::install_from_#{node['nullmailer']['install_method']}"
 
 mailname  = node["nullmailer"]["mailname"] || node.fqdn
 adminaddr = node["nullmailer"]["adminaddr"]
@@ -35,5 +40,3 @@ service "nullmailer" do
   supports :restart => true
   action [:enable, :start]
 end
-
-

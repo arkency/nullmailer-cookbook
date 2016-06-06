@@ -6,6 +6,30 @@ Installs and configures [nullmailer](http://untroubled.org/nullmailer/), simple 
 Attributes
 ==========
 
+- `node['nullmailer']['install_method']`
+
+  Installation method: `package` or `source` (defaults to `source`)
+
+- `node['nullmailer']['src_url']`
+
+  URL of the source repository (defaults to `http://untroubled.org/nullmailer/archive/`)
+
+- `node['nullmailer']['version']`
+
+  Version of the source package (defaults to `1.13`)
+
+- `node['nullmailer']['checksum']`
+
+  Checksum of the source tarball
+
+- `node['nullmailer']['dir']`
+
+  Prefix for the installation (defaults to `/usr/local`)
+
+- `node['nullmailer']['tls']`
+
+  Enables TLS if set to true (default `true`)
+
 - `node['nullmailer']['mailname']`
 
   Fully-qualified host name of the node running relay agent. Defaults to `node.fqdn`.
@@ -19,7 +43,7 @@ Attributes
   ```ruby
   node['nullmailer']['remotes'] = ['1.2.3.4', 'host.domain smtp --port=2525 --user=user --pass=pass']
   ```
-  
+
   Possible command-line arguments:
   - --port, set the port number of the remote host to connect to
   - --user, set the user name to be used for authentication
